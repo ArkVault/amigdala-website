@@ -47,6 +47,7 @@ const config: Config = {
         sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'IBM Plex Serif', 'Georgia', 'serif'],
         mono: ['var(--font-mono)', 'Space Grotesk', 'monospace'],
+        kinghood: ['var(--font-kinghood)', 'serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',

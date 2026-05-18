@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Serif, Inter, Space_Grotesk } from 'next/font/google'
+import localFont from 'next/font/local'
 import { ThemeProvider } from '@/components/theme-provider'
 
 import './globals.css'
@@ -18,6 +19,12 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-mono',
+})
+
+const kinghood = localFont({
+  src: '../public/fonts/Kinghood.ttf',
+  variable: '--font-kinghood',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -64,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${ibmPlexSerif.variable} ${inter.variable} ${spaceGrotesk.variable} bg-background`} suppressHydrationWarning>
+    <html lang="en" className={`${ibmPlexSerif.variable} ${inter.variable} ${spaceGrotesk.variable} ${kinghood.variable} bg-background`} suppressHydrationWarning>
       <body className="font-sans antialiased overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {children}

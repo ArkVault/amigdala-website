@@ -24,7 +24,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2">
-            <span className="font-serif text-xl italic tracking-wide text-foreground">
+            <span className="font-kinghood text-2xl tracking-wide text-foreground">
               Amigdala
             </span>
             <p className="text-sm text-muted-foreground mt-4 max-w-xs leading-relaxed">

@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -31,9 +31,9 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.1, ease }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground leading-[1.1] mb-8"
           >
-            The observe-act layer
+            The self-evolving enterprise knowledge engine
             <br />
-            <span className="italic">for AI-first companies</span>
+            <span className="italic">for executives.</span>
           </motion.h1>
 
           {/* Description */}
@@ -64,17 +64,6 @@ export function HeroSection() {
               <span>Request Pilot</span>
               <ArrowRight size={14} strokeWidth={2} />
             </motion.a>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-3 px-6 py-3 text-[11px] font-mono tracking-[0.12em] uppercase text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <span className="flex items-center justify-center w-8 h-8 border border-border rounded-full">
-                <Play size={12} strokeWidth={2} className="ml-0.5" />
-              </span>
-              <span>See Decision Galaxy</span>
-            </motion.button>
           </motion.div>
         </div>
 

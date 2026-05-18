@@ -24,7 +24,7 @@ export function Navbar() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <span className="font-serif text-2xl italic tracking-wide text-foreground">
+          <span className="font-kinghood text-3xl tracking-wide text-foreground">
             Amigdala
           </span>
         </motion.div>
