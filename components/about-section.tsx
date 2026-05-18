@@ -30,7 +30,7 @@ export function AboutSection() {
   return (
     <section id="solution" className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-start">
           {/* Left column - Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
