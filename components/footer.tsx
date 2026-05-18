@@ -18,10 +18,10 @@ export function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, ease }}
-      className="w-full border-t border-border px-12 lg:px-24 py-16"
+      className="w-full border-t border-border px-6 sm:px-12 lg:px-24 py-12 sm:py-16"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-10 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand */}
           <div className="col-span-2">
             <span className="font-kinghood text-2xl tracking-wide text-foreground">

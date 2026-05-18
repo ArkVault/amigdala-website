@@ -7,7 +7,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 export function HeroSection() {
   return (
-    <section id="problem" className="relative w-full min-h-screen flex items-center px-8 sm:px-12 lg:px-24 pt-32 pb-20">
+    <section id="problem" className="relative w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-24 pt-28 sm:pt-32 pb-16 sm:pb-20">
       <div className="relative z-10 grid grid-cols-12 gap-8 w-full max-w-7xl mx-auto">
         {/* Left content */}
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
@@ -16,10 +16,10 @@ export function HeroSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease }}
-            className="flex items-center gap-4 mb-8"
+            className="flex items-center gap-3 sm:gap-4 mb-8"
           >
-            <div className="w-12 h-[1px] bg-muted-foreground/30" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">
+            <div className="hidden sm:block w-12 h-[1px] bg-muted-foreground/30" />
+            <span className="text-[10px] font-mono tracking-[0.18em] sm:tracking-[0.25em] uppercase text-muted-foreground">
               SELF-EVOLVING ENTERPRISE KNOWLEDGE
             </span>
           </motion.div>

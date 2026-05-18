@@ -17,10 +17,10 @@ const sourceSignals = [
 export function GlitchMarquee() {
   return (
     <section className="w-full py-16 border-t border-border overflow-hidden">
-      <div className="max-w-7xl mx-auto px-12 lg:px-24 mb-8">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-[1px] bg-muted-foreground/30" />
-          <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 mb-8">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="hidden sm:block w-12 h-[1px] bg-muted-foreground/30" />
+          <span className="text-[10px] font-mono tracking-[0.18em] sm:tracking-[0.25em] uppercase text-muted-foreground">
             ENTERPRISE REALITY IN MOTION
           </span>
         </div>
@@ -28,8 +28,8 @@ export function GlitchMarquee() {
 
       <div className="relative">
         {/* Gradient masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
         {/* Scrolling content */}
         <motion.div
