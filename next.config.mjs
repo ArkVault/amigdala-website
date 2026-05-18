@@ -3,23 +3,17 @@ const nextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  async rewrites() {
+  async redirects() {
     return [
       {
         source: '/app',
-        destination: 'https://aerlig.vercel.app/',
+        destination: 'https://app.amigdala.ai',
+        permanent: false,
       },
       {
         source: '/app/:path*',
-        destination: 'https://aerlig.vercel.app/:path*',
-      },
-      {
-        source: '/_next/static/:path*',
-        destination: 'https://aerlig.vercel.app/_next/static/:path*',
-      },
-      {
-        source: '/icon.png',
-        destination: 'https://aerlig.vercel.app/icon.png',
+        destination: 'https://app.amigdala.ai/:path*',
+        permanent: false,
       },
     ]
   },
