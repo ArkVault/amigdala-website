@@ -1,40 +1,40 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Brain, Zap, Shield, Globe } from "lucide-react"
+import { Brain, Shield, GitBranch, FileCode2 } from "lucide-react"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 const features = [
   {
     icon: Brain,
-    label: "Neural Mesh",
-    title: "Distributed Intelligence",
-    description: "Decentralized inference nodes operating across the global edge fabric for zero-latency reasoning and seamless knowledge retrieval.",
-  },
-  {
-    icon: Zap,
-    label: "Speed",
-    title: "Millisecond Retrieval",
-    description: "High-precision vector indexing ensuring data parity within single-digit millisecond windows for instant context delivery.",
+    label: "Core Moat",
+    title: "Intuition Interpreter",
+    description: "Codifies stakes, causality, escalation, voice, and decision logic from the artifacts your company already produces.",
   },
   {
     icon: Shield,
     label: "Security",
-    title: "Enterprise Grade",
-    description: "SOC2 Type II compliant with end-to-end encryption. Your knowledge stays private with isolated compute environments.",
+    title: "Enterprise-Grade Control",
+    description: "Customer-owned data, encryption at rest and in transit, and architecture built for sensitive operating environments.",
   },
   {
-    icon: Globe,
-    label: "Scale",
-    title: "Global Deployment",
-    description: "Deploy across 50+ edge regions with automatic failover and load balancing for consistent worldwide performance.",
+    icon: GitBranch,
+    label: "Visualization",
+    title: "Knowledge Galaxies",
+    description: "A drillable map of how every decision is made, replacing dashboards, KPI trackers, and exception reports with visual pathways.",
+  },
+  {
+    icon: FileCode2,
+    label: "Runtime",
+    title: "Skills-Native Output",
+    description: "Any AI agent can call Amigdala at a decision fork and receive a decision, confidence, citation, HITL signal, and audit trail.",
   },
 ]
 
 export function FeatureGrid() {
   return (
-    <section className="relative w-full px-12 lg:px-24 py-32">
+    <section id="features" className="relative w-full px-8 sm:px-12 lg:px-24 py-32">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -48,16 +48,16 @@ export function FeatureGrid() {
             <div className="flex items-center gap-4">
               <div className="w-12 h-[1px] bg-muted-foreground/30" />
               <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">
-                CORE CAPABILITIES
+                CORE FEATURES
               </span>
             </div>
             <h2 className="font-serif text-3xl lg:text-4xl font-light text-foreground">
-              Architectural Foundation
+              Four features. One primitive.
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
-            Built on a substrate of precision engineering and fluid intelligence, 
-            designed for the demands of modern enterprise.
+            Amigdala turns scattered enterprise artifacts into actionable memory
+            that agents and executives can trust.
           </p>
         </motion.div>
 

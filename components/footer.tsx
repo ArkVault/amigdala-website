@@ -25,7 +25,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <span className="font-serif text-xl italic tracking-wide text-foreground">
-              Aerlig
+              Amigdala
             </span>
             <p className="text-sm text-muted-foreground mt-4 max-w-xs leading-relaxed">
               The knowledge engine for enterprise. 
@@ -109,7 +109,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t border-border">
           <span className="text-[11px] text-muted-foreground">
-            {"\u00A9"} 2026 Aerlig. All rights reserved.
+            {"\u00A9"} 2026 Amigdala. All rights reserved.
           </span>
           <div className="flex items-center gap-6">
             {["Twitter", "LinkedIn", "GitHub"].map((social) => (

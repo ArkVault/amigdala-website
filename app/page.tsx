@@ -9,7 +9,7 @@ import { GeometricBackground } from "@/components/geometric-background"
 
 export default function Page() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-x-hidden">
       <GeometricBackground />
       <Navbar />
       <main className="relative z-10">

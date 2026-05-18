@@ -3,21 +3,18 @@
 import { useEffect, useState } from "react"
 
 const LOG_LINES = [
-  "> Initializing AI pipeline...",
-  "> Loading model weights: 2.4GB",
-  "> Connecting to data stream...",
-  "> Analyzing codebase...",
-  "> Running inference: batch_01",
-  "> Optimization pass: 1/3",
-  "> Optimization pass: 2/3",
-  "> Optimization pass: 3/3",
-  "> 98% Optimized",
-  "> Deploying to edge nodes...",
-  "> Status: OPERATIONAL",
-  "> Latency: 12ms p99",
-  "> Throughput: 14.2k req/s",
-  "> Memory: 847MB / 2048MB",
-  "> --------- CYCLE COMPLETE ---------",
+  "> Reading enterprise artifacts...",
+  "> Mapping stakes and causality...",
+  "> Capturing escalation rules...",
+  "> Extracting brand voice...",
+  "> Updating procedural memory...",
+  "> Linking citations...",
+  "> Building decision galaxy...",
+  "> HITL checkpoint detected",
+  "> Confidence: 87%",
+  "> Output: decision-ready context",
+  "> Audit trail: attached",
+  "> --------- CONTEXT CYCLE COMPLETE ---------",
 ]
 
 export function TerminalCard() {

@@ -2,15 +2,16 @@
 
 import { motion } from "framer-motion"
 
-const partners = [
-  "Anthropic",
-  "OpenAI",
-  "Google Cloud",
-  "AWS",
-  "Microsoft Azure",
-  "Snowflake",
-  "Databricks",
-  "Stripe",
+const sourceSignals = [
+  "Slack",
+  "Teams",
+  "Tickets",
+  "CRM",
+  "ERP",
+  "Brand Voice",
+  "Escalations",
+  "Decision Logs",
+  "Audit Trails",
 ]
 
 export function GlitchMarquee() {
@@ -20,7 +21,7 @@ export function GlitchMarquee() {
         <div className="flex items-center gap-4">
           <div className="w-12 h-[1px] bg-muted-foreground/30" />
           <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">
-            TRUSTED BY INDUSTRY LEADERS
+            ENTERPRISE REALITY IN MOTION
           </span>
         </div>
       </div>
@@ -43,12 +44,12 @@ export function GlitchMarquee() {
           }}
           className="flex items-center gap-16 whitespace-nowrap"
         >
-          {[...partners, ...partners, ...partners].map((partner, i) => (
+          {[...sourceSignals, ...sourceSignals, ...sourceSignals].map((signal, i) => (
             <span
-              key={`${partner}-${i}`}
+              key={`${signal}-${i}`}
               className="text-lg font-serif text-muted-foreground/40 tracking-wide"
             >
-              {partner}
+              {signal}
             </span>
           ))}
         </motion.div>

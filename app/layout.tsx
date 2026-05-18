@@ -21,33 +21,33 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Aerlig - The Knowledge Engine for Enterprise',
+  title: 'Amigdala - The Self-Evolving Enterprise Knowledge Engine',
   description:
-    'Aerlig is the knowledge engine that powers enterprise intelligence. Manage source context, streamline reasoning, and unlock organizational knowledge with precision.',
+    'Amigdala is the observe-act layer between AI agents and how your company runs. Persistent enterprise context, visual decision pathways, and audit-ready intelligence.',
   keywords: [
-    'knowledge engine',
+    'enterprise knowledge engine',
     'enterprise AI',
-    'knowledge management',
-    'AI infrastructure',
-    'source context',
-    'organizational intelligence',
+    'persistent context',
+    'AI agents',
+    'decision intelligence',
+    'knowledge galaxy',
   ],
-  authors: [{ name: 'Aerlig' }],
-  creator: 'Aerlig',
-  publisher: 'Aerlig',
+  authors: [{ name: 'Amigdala' }],
+  creator: 'Amigdala',
+  publisher: 'Amigdala',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Aerlig - The Knowledge Engine for Enterprise',
+    title: 'Amigdala - The Self-Evolving Enterprise Knowledge Engine',
     description:
-      'The knowledge engine that powers enterprise intelligence. Manage source context and unlock organizational knowledge.',
-    siteName: 'Aerlig',
+      'Persistent enterprise context for AI agents, executives, and the decisions they need to make.',
+    siteName: 'Amigdala',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aerlig - The Knowledge Engine for Enterprise',
+    title: 'Amigdala - The Self-Evolving Enterprise Knowledge Engine',
     description:
-      'The knowledge engine that powers enterprise intelligence. Manage source context and unlock organizational knowledge.',
+      'Persistent enterprise context for AI agents, executives, and the decisions they need to make.',
   },
 }
 
@@ -65,7 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${ibmPlexSerif.variable} ${inter.variable} ${spaceGrotesk.variable} bg-background`} suppressHydrationWarning>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {children}
         </ThemeProvider>

@@ -1,165 +1,80 @@
 "use client"
 
-import { ArrowRight, Check } from "lucide-react"
+import { ArrowRight, Check, CircleDollarSign, ClipboardCheck, Network, Workflow } from "lucide-react"
 import { motion } from "framer-motion"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-interface Tier {
-  id: string
-  name: string
-  price: string
-  period: string
-  tag: string | null
-  description: string
-  features: string[]
-  cta: string
-  highlighted: boolean
-}
-
-const TIERS: Tier[] = [
+const benefits = [
   {
-    id: "starter",
-    name: "Starter",
-    price: "0",
-    period: "/ forever",
-    tag: null,
-    description: "For individuals exploring knowledge management.",
-    features: [
-      "10K requests / month",
-      "Community models",
-      "Single workspace",
-      "Email support",
-    ],
-    cta: "Get Started Free",
-    highlighted: false,
+    icon: CircleDollarSign,
+    label: "Budget",
+    title: "Reduce repeated AI-token spend",
+    description: "Stop paying each agent session to relearn the same enterprise reality. Persistent context makes AI usage more efficient and procurement-modelable.",
   },
   {
-    id: "pro",
-    name: "Professional",
-    price: "149",
-    period: "/ month",
-    tag: "Popular",
-    description: "For teams building production applications.",
-    features: [
-      "Unlimited requests",
-      "All foundation models",
-      "Unlimited workspaces",
-      "Priority support",
-      "Advanced analytics",
-      "Custom integrations",
-    ],
-    cta: "Start Building",
-    highlighted: true,
+    icon: Workflow,
+    label: "Execution",
+    title: "Move AI pilots into production",
+    description: "Agents get operating context, decision rules, citations, and escalation paths, so teams can ship AI workflows that survive outside demos.",
   },
   {
-    id: "enterprise",
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    tag: null,
-    description: "For organizations with advanced requirements.",
-    features: [
-      "Everything in Pro",
-      "Dedicated infrastructure",
-      "Custom SLA",
-      "On-premise deployment",
-      "24/7 dedicated support",
-      "Security audit reports",
-    ],
-    cta: "Contact Sales",
-    highlighted: false,
+    icon: Network,
+    label: "Leadership",
+    title: "Replace tribal knowledge with decision pathways",
+    description: "Executives see how decisions are made across functions, countries, and systems without waiting for dashboard cleanups or status meetings.",
+  },
+  {
+    icon: ClipboardCheck,
+    label: "Governance",
+    title: "Make every recommendation auditable",
+    description: "Each output can include decision, confidence, citation, human-in-the-loop signal, and audit trail for sensitive enterprise environments.",
   },
 ]
 
-function PricingCard({ tier, index }: { tier: Tier; index: number }) {
-  const isCustom = tier.price === "Custom"
+const proofPoints = [
+  "Persistent company context for AI agents",
+  "Visual decision galaxies for executives",
+  "Sector packs for FS, legal, pharma, aviation, transport, healthcare, and government",
+  "Value-aligned commercial model: knowledge base, AI credits, and outcome share",
+]
 
+function BenefitCard({ benefit, index }: { benefit: (typeof benefits)[number]; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: index * 0.12, duration: 0.6, ease }}
-      className={`flex flex-col h-full p-8 ${
-        tier.highlighted
-          ? "bg-foreground text-primary-foreground"
-          : "bg-background border border-border"
-      }`}
+      className="flex flex-col h-full p-8 bg-background"
     >
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <span className={`text-[11px] font-mono tracking-[0.15em] uppercase ${
-          tier.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"
-        }`}>
-          {tier.name}
+        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-muted-foreground">
+          {benefit.label}
         </span>
-        {tier.tag && (
-          <span className="bg-primary-foreground text-foreground text-[9px] font-mono tracking-[0.1em] uppercase px-2 py-1 rounded-sm">
-            {tier.tag}
-          </span>
-        )}
-      </div>
-
-      {/* Price */}
-      <div className="mb-6">
-        <div className="flex items-baseline gap-1">
-          {isCustom ? (
-            <span className="font-serif text-3xl lg:text-4xl font-light">Custom</span>
-          ) : (
-            <>
-              <span className="font-serif text-3xl lg:text-4xl font-light">${tier.price}</span>
-              <span className={`text-sm ${tier.highlighted ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
-                {tier.period}
-              </span>
-            </>
-          )}
-        </div>
-        <p className={`text-sm mt-3 ${tier.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-          {tier.description}
-        </p>
-      </div>
-
-      {/* Features */}
-      <div className="flex-1 mb-8">
-        <div className="flex flex-col gap-3">
-          {tier.features.map((feature) => (
-            <div key={feature} className="flex items-start gap-3">
-              <Check
-                size={14}
-                strokeWidth={2}
-                className={`mt-0.5 shrink-0 ${tier.highlighted ? "text-primary-foreground/70" : "text-foreground"}`}
-              />
-              <span className={`text-[13px] ${tier.highlighted ? "text-primary-foreground/90" : "text-foreground"}`}>
-                {feature}
-              </span>
-            </div>
-          ))}
+        <div className="w-10 h-10 flex items-center justify-center border border-border rounded-sm">
+          <benefit.icon size={18} strokeWidth={1.5} className="text-foreground" />
         </div>
       </div>
 
-      {/* CTA */}
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className={`w-full flex items-center justify-center gap-2 py-3 text-[11px] font-mono tracking-[0.12em] uppercase rounded-sm transition-colors ${
-          tier.highlighted
-            ? "bg-primary-foreground text-foreground hover:bg-primary-foreground/90"
-            : "bg-foreground text-primary-foreground hover:bg-foreground/90"
-        }`}
-      >
-        <span>{tier.cta}</span>
-        <ArrowRight size={14} strokeWidth={2} />
-      </motion.button>
+      <h3 className="font-serif text-xl font-light text-foreground mb-4">
+        {benefit.title}
+      </h3>
+      <p className="text-[13px] text-muted-foreground leading-relaxed flex-1">
+        {benefit.description}
+      </p>
+
+      <span className="text-[9px] font-mono tracking-[0.2em] uppercase text-muted-foreground/50 mt-8">
+        {String(index + 1).padStart(2, "0")}
+      </span>
     </motion.div>
   )
 }
 
 export function PricingSection() {
   return (
-    <section className="relative w-full px-12 lg:px-24 py-32 border-t border-border">
+    <section id="benefits" className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border">
       <div className="max-w-7xl mx-auto">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -170,36 +85,51 @@ export function PricingSection() {
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-[1px] bg-muted-foreground/30" />
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">
-              PRICING
+              BENEFITS
             </span>
             <div className="w-12 h-[1px] bg-muted-foreground/30" />
           </div>
           <h2 className="font-serif text-3xl lg:text-4xl font-light text-foreground mb-4">
-            Choose Your Plan
+            Benefits that compound every session
           </h2>
-          <p className="text-sm text-muted-foreground max-w-md mx-auto">
-            Start free, scale as you grow. All plans include access to our core knowledge engine.
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+            Amigdala creates leverage by keeping organizational context alive,
+            turning AI interactions into reusable company knowledge instead of
+            one-off prompts.
           </p>
         </motion.div>
 
-        {/* Pricing grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
-          {TIERS.map((tier, i) => (
-            <PricingCard key={tier.id} tier={tier} index={i} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+          {benefits.map((benefit, i) => (
+            <BenefitCard key={benefit.label} benefit={benefit} index={i} />
           ))}
         </div>
 
-        {/* Bottom note */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.5, ease }}
-          className="flex items-center justify-center gap-4 mt-8"
+          className="mt-10 border border-border bg-secondary/40 p-6"
         >
-          <span className="text-[11px] text-muted-foreground">
-            All plans billed annually. Cancel anytime.
-          </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {proofPoints.map((point) => (
+              <div key={point} className="flex items-start gap-3">
+                <Check size={14} strokeWidth={2} className="mt-0.5 shrink-0 text-foreground" />
+                <span className="text-[12px] text-muted-foreground leading-relaxed">
+                  {point}
+                </span>
+              </div>
+            ))}
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-6 flex items-center justify-center gap-2 bg-foreground text-primary-foreground px-6 py-3 text-[11px] font-mono tracking-[0.12em] uppercase rounded-sm"
+          >
+            <span>Build a Pilot</span>
+            <ArrowRight size={14} strokeWidth={2} />
+          </motion.button>
         </motion.div>
       </div>
     </section>
