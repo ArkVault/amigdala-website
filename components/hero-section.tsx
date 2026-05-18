@@ -55,14 +55,15 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.45, ease }}
             className="flex flex-wrap items-center gap-4"
           >
-            <motion.button
+            <motion.a
+              href="/app"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="flex items-center gap-3 bg-foreground text-primary-foreground px-6 py-3 text-[11px] font-mono tracking-[0.12em] uppercase rounded-sm"
             >
               <span>Request Pilot</span>
               <ArrowRight size={14} strokeWidth={2} />
-            </motion.button>
+            </motion.a>
 
             <motion.button
               whileHover={{ scale: 1.02 }}

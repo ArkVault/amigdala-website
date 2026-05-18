@@ -53,18 +53,19 @@ export function Navbar() {
           className="flex items-center gap-6"
         >
           <a
-            href="#"
+            href="/app"
             className="text-[11px] font-mono tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
             Partner Login
           </a>
-          <motion.button
+          <motion.a
+            href="/app"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="bg-foreground text-primary-foreground px-6 py-2.5 text-[11px] font-mono tracking-[0.12em] uppercase rounded-sm"
           >
             Request Pilot
-          </motion.button>
+          </motion.a>
         </motion.div>
       </nav>
     </motion.header>
