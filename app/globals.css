@@ -4,47 +4,26 @@
 
 @layer base {
   :root {
-    --background: 43 23% 93%;
-    --foreground: 0 0% 4%;
-    --card: 43 23% 93%;
-    --card-foreground: 0 0% 4%;
-    --popover: 43 23% 93%;
-    --popover-foreground: 0 0% 4%;
-    --primary: 0 0% 4%;
-    --primary-foreground: 43 23% 93%;
-    --secondary: 0 0% 90%;
-    --secondary-foreground: 0 0% 4%;
-    --muted: 40 10% 85%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 20 90% 45%;
-    --accent-foreground: 0 0% 100%;
+    --background: 40 20% 97%;
+    --foreground: 220 25% 14%;
+    --card: 40 20% 97%;
+    --card-foreground: 220 25% 14%;
+    --popover: 40 20% 97%;
+    --popover-foreground: 220 25% 14%;
+    --primary: 220 25% 14%;
+    --primary-foreground: 40 20% 97%;
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 220 25% 14%;
+    --muted: 40 12% 90%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 40 15% 92%;
+    --accent-foreground: 220 25% 14%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 75%;
-    --input: 0 0% 75%;
-    --ring: 0 0% 4%;
-    --radius: 0rem;
-  }
-  .dark {
-    --background: 0 0% 6%;
-    --foreground: 43 23% 93%;
-    --card: 0 0% 8%;
-    --card-foreground: 43 23% 93%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 43 23% 93%;
-    --primary: 43 23% 93%;
-    --primary-foreground: 0 0% 6%;
-    --secondary: 0 0% 14%;
-    --secondary-foreground: 43 23% 93%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 20 90% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 43 23% 93%;
+    --border: 220 10% 82%;
+    --input: 40 15% 92%;
+    --ring: 220 25% 14%;
+    --radius: 0.5rem;
   }
 }
 
@@ -57,61 +36,141 @@
   }
 }
 
-/* Dot Grid Background */
-.dot-grid-bg {
-  background-image: radial-gradient(circle, #c4c2b8 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-.dark .dot-grid-bg {
-  background-image: radial-gradient(circle, hsl(0 0% 20%) 1px, transparent 1px);
+/* Geometric curved lines background */
+.geometric-bg {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Glitch Keyframes */
-@keyframes glitch {
-  0%, 90%, 100% {
-    transform: translate(0);
-    filter: none;
-  }
-  92% {
-    transform: translate(-2px, 1px);
-    filter: hue-rotate(90deg);
-  }
-  94% {
-    transform: translate(2px, -1px);
-    filter: hue-rotate(-90deg);
-  }
-  96% {
-    transform: translate(-1px, -1px);
-    filter: none;
-  }
-  98% {
-    transform: translate(1px, 2px);
-    filter: hue-rotate(45deg);
-  }
+.geometric-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-100 400 Q300 100 600 400 T1300 400' stroke='%23d4d3ce' stroke-width='1' fill='none'/%3E%3Cpath d='M-100 450 Q300 150 600 450 T1300 450' stroke='%23d4d3ce' stroke-width='1' fill='none'/%3E%3Cpath d='M400 -100 Q700 300 400 600 T400 1000' stroke='%23d4d3ce' stroke-width='1' fill='none'/%3E%3Cpath d='M450 -100 Q750 300 450 600 T450 1000' stroke='%23d4d3ce' stroke-width='1' fill='none'/%3E%3Ccircle cx='600' cy='400' r='150' stroke='%23d4d3ce' stroke-width='1' fill='none'/%3E%3Ccircle cx='600' cy='400' r='200' stroke='%23e0dfda' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='300' cy='350' r='4' fill='%23c4c3be'/%3E%3Ccircle cx='500' cy='280' r='3' fill='%23c4c3be'/%3E%3Ccircle cx='700' cy='320' r='4' fill='%23c4c3be'/%3E%3Ccircle cx='850' cy='400' r='3' fill='%23c4c3be'/%3E%3Ccircle cx='400' cy='500' r='3' fill='%23c4c3be'/%3E%3Ccircle cx='650' cy='520' r='4' fill='%23c4c3be'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.7;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* Corner brackets */
+.corner-brackets {
+  position: relative;
 }
 
-@keyframes blink {
+.corner-brackets::before,
+.corner-brackets::after {
+  content: '';
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-color: #c8c7c2;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.corner-brackets::before {
+  top: 32px;
+  left: 32px;
+  border-left: 1.5px solid;
+  border-top: 1.5px solid;
+}
+
+.corner-brackets::after {
+  top: 32px;
+  right: 32px;
+  border-right: 1.5px solid;
+  border-top: 1.5px solid;
+}
+
+/* Additional corner brackets via pseudo elements on body */
+.bottom-corners::before,
+.bottom-corners::after {
+  content: '';
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-color: #c8c7c2;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.bottom-corners::before {
+  bottom: 32px;
+  left: 32px;
+  border-left: 1.5px solid;
+  border-bottom: 1.5px solid;
+}
+
+.bottom-corners::after {
+  bottom: 32px;
+  right: 32px;
+  border-right: 1.5px solid;
+  border-bottom: 1.5px solid;
+}
+
+/* Grid overlay */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    linear-gradient(to right, rgba(200, 199, 194, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200, 199, 194, 0.15) 1px, transparent 1px);
+  background-size: 12.5% 12.5%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50% { opacity: 0.5; }
 }
 
-.animate-glitch {
-  animation: glitch 5s infinite;
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
+.animate-slide-in {
+  animation: slideInFromLeft 0.5s ease-out forwards;
 }
 
-.animate-blink {
-  animation: blink 1s step-end infinite;
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(248, 247, 244, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Metric bar styles */
+.metric-bar {
+  height: 3px;
+  background: rgba(28, 37, 53, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #1c2535;
+  transition: width 1.5s ease-out;
 }

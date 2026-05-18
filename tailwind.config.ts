@@ -42,18 +42,17 @@ const config: Config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-
       },
       fontFamily: {
-        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
-        pixel: ['var(--font-geist-pixel-grid)', 'monospace'],
+        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'IBM Plex Serif', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'Space Grotesk', 'monospace'],
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-
     },
   },
   plugins: [require('tailwindcss-animate')],
