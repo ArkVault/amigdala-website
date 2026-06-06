@@ -26,14 +26,14 @@ export function CategoryStatement() {
       className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-start">
+        <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-center">
           {/* Left column - the punch line */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease }}
-            className="col-span-12 lg:col-span-6"
+            className="col-span-12 lg:col-span-5"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-[1px] bg-muted-foreground/30" />
@@ -57,62 +57,82 @@ export function CategoryStatement() {
             </p>
           </motion.div>
 
-          {/* Right column - contrast pair */}
+          {/* Right column - video demo slot */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.1, ease }}
-            className="col-span-12 lg:col-span-6"
+            className="col-span-12 lg:col-span-7"
           >
-            <div className="grid grid-cols-1 gap-px bg-border">
-              {contrast.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.1, duration: 0.5, ease }}
-                  className={`p-7 flex flex-col gap-3 ${
-                    item.muted
-                      ? "bg-background"
-                      : "bg-secondary/60 border-l-2 border-emerald-500/70"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        item.muted
-                          ? "bg-muted-foreground/30"
-                          : "bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.7)]"
-                      }`}
-                    />
-                    <span
-                      className={`text-[9px] font-mono tracking-[0.2em] uppercase ${
-                        item.muted ? "text-muted-foreground/50" : "text-emerald-500/80"
-                      }`}
-                    >
-                      {item.examples}
-                    </span>
-                  </div>
-                  <h3
-                    className={`font-serif text-xl lg:text-2xl font-light ${
-                      item.muted ? "text-muted-foreground/70" : "text-foreground"
-                    }`}
-                  >
-                    {item.label}
-                  </h3>
-                  <p
-                    className={`text-[13px] leading-relaxed ${
-                      item.muted ? "text-muted-foreground/60" : "text-muted-foreground"
-                    }`}
-                  >
-                    {item.desc}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-secondary/40">
+              {/* ── VIDEO DEMO ──────────────────────────────────────────────
+                  Easiest option: drop a file at  public/demo.mp4  (and an
+                  optional still frame at  public/demo-poster.jpg ). It then
+                  serves automatically — no other change needed.
+                  To use Loom/YouTube/Vimeo instead, delete the <video> below
+                  and paste their <iframe> here (same aspect-video wrapper). */}
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/demo.mp4"
+                poster="/demo-poster.jpg"
+                controls
+                playsInline
+                preload="metadata"
+              />
+              {/* corner label */}
+              <span className="pointer-events-none absolute left-4 top-4 z-10 text-[9px] font-mono tracking-[0.2em] uppercase text-muted-foreground/70">
+                Product demo
+              </span>
             </div>
           </motion.div>
+        </div>
+
+        {/* Contrast pair — subtle, minimalist two-up comparison */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16">
+          {contrast.map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ delay: 0.1 + i * 0.1, duration: 0.5, ease }}
+              className={`p-7 flex flex-col gap-3 rounded-sm border ${
+                item.muted ? "border-border" : "border-emerald-500/30 bg-secondary/30"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    item.muted
+                      ? "bg-muted-foreground/30"
+                      : "bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]"
+                  }`}
+                />
+                <span
+                  className={`text-[9px] font-mono tracking-[0.2em] uppercase ${
+                    item.muted ? "text-muted-foreground/50" : "text-emerald-600/70"
+                  }`}
+                >
+                  {item.examples}
+                </span>
+              </div>
+              <h3
+                className={`font-serif text-xl lg:text-2xl font-light ${
+                  item.muted ? "text-muted-foreground/70" : "text-foreground"
+                }`}
+              >
+                {item.label}
+              </h3>
+              <p
+                className={`text-[13px] leading-relaxed ${
+                  item.muted ? "text-muted-foreground/60" : "text-muted-foreground"
+                }`}
+              >
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
