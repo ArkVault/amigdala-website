@@ -4,6 +4,14 @@ import { motion } from "framer-motion"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+// ── VIDEO DEMO ──────────────────────────────────────────────────────────
+// Paste the *embed* URL here (Loom/YouTube/Vimeo). Examples:
+//   Loom:    https://www.loom.com/embed/<id>
+//   YouTube: https://www.youtube.com/embed/<id>
+//   Vimeo:   https://player.vimeo.com/video/<id>
+// Leave empty to show the "Demo coming soon" placeholder.
+const DEMO_EMBED_URL = ""
+
 const contrast = [
   {
     label: "Personal second brain",
@@ -66,20 +74,21 @@ export function CategoryStatement() {
             className="col-span-12 lg:col-span-7"
           >
             <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-secondary/40">
-              {/* ── VIDEO DEMO ──────────────────────────────────────────────
-                  Easiest option: drop a file at  public/demo.mp4  (and an
-                  optional still frame at  public/demo-poster.jpg ). It then
-                  serves automatically — no other change needed.
-                  To use Loom/YouTube/Vimeo instead, delete the <video> below
-                  and paste their <iframe> here (same aspect-video wrapper). */}
-              <video
-                className="absolute inset-0 h-full w-full object-cover"
-                src="/demo.mp4"
-                poster="/demo-poster.jpg"
-                controls
-                playsInline
-                preload="metadata"
-              />
+              {DEMO_EMBED_URL ? (
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src={DEMO_EMBED_URL}
+                  title="Amigdala product demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground/50">
+                    Demo coming soon
+                  </span>
+                </div>
+              )}
               {/* corner label */}
               <span className="pointer-events-none absolute left-4 top-4 z-10 text-[9px] font-mono tracking-[0.2em] uppercase text-muted-foreground/70">
                 Product demo

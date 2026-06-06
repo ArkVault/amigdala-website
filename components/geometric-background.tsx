@@ -1,80 +1,103 @@
 "use client"
 
+import { motion } from "framer-motion"
+
+// Gentle elliptical drift — x and y are a quarter-phase apart so each group
+// traces a slow curved (looping) trajectory rather than a straight slide.
+// Amplitudes are small and durations long, so the motion stays subtle.
+const drift = (ax: number, ay: number, duration: number, delay = 0) => ({
+  animate: {
+    x: [0, ax, 0, -ax, 0],
+    y: [ay, 0, -ay, 0, ay],
+  },
+  transition: {
+    duration,
+    delay,
+    ease: "easeInOut" as const,
+    repeat: Infinity,
+    repeatType: "loop" as const,
+  },
+})
+
 export function GeometricBackground() {
   return (
     <>
       {/* SVG Geometric Lines */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <svg 
+        <svg
           className="w-full h-full opacity-40"
-          viewBox="0 0 1200 800" 
-          fill="none" 
+          viewBox="0 0 1200 800"
+          fill="none"
           preserveAspectRatio="xMidYMid slice"
         >
           {/* Horizontal curved lines */}
-          <path 
-            d="M-100 350 Q250 50 500 350 T1100 350" 
-            stroke="#c8c7c2" 
-            strokeWidth="1" 
-            fill="none"
-          />
-          <path 
-            d="M-100 400 Q250 100 500 400 T1100 400" 
-            stroke="#c8c7c2" 
-            strokeWidth="1" 
-            fill="none"
-          />
-          <path 
-            d="M-100 450 Q250 150 500 450 T1100 450" 
-            stroke="#d4d3ce" 
-            strokeWidth="0.75" 
-            fill="none"
-          />
-          
+          <motion.g {...drift(14, 10, 26)}>
+            <path
+              d="M-100 350 Q250 50 500 350 T1100 350"
+              stroke="#c8c7c2"
+              strokeWidth="1"
+              fill="none"
+            />
+            <path
+              d="M-100 400 Q250 100 500 400 T1100 400"
+              stroke="#c8c7c2"
+              strokeWidth="1"
+              fill="none"
+            />
+            <path
+              d="M-100 450 Q250 150 500 450 T1100 450"
+              stroke="#d4d3ce"
+              strokeWidth="0.75"
+              fill="none"
+            />
+          </motion.g>
+
           {/* Vertical curved lines */}
-          <path 
-            d="M350 -100 Q50 250 350 500 T350 900" 
-            stroke="#c8c7c2" 
-            strokeWidth="1" 
-            fill="none"
-          />
-          <path 
-            d="M400 -100 Q100 250 400 500 T400 900" 
-            stroke="#c8c7c2" 
-            strokeWidth="1" 
-            fill="none"
-          />
-          <path 
-            d="M450 -100 Q150 250 450 500 T450 900" 
-            stroke="#d4d3ce" 
-            strokeWidth="0.75" 
-            fill="none"
-          />
-          
-          {/* Central ellipse */}
-          <ellipse 
-            cx="400" 
-            cy="400" 
-            rx="180" 
-            ry="120" 
-            stroke="#d4d3ce" 
-            strokeWidth="0.75" 
-            fill="none"
-          />
-          
-          {/* Intersection dots */}
-          <circle cx="300" cy="350" r="3" fill="#c4c3be" />
-          <circle cx="400" cy="280" r="2" fill="#c4c3be" />
-          <circle cx="500" cy="320" r="3" fill="#c4c3be" />
-          <circle cx="350" cy="450" r="2" fill="#c4c3be" />
-          <circle cx="450" cy="480" r="3" fill="#c4c3be" />
-          <circle cx="280" cy="420" r="2" fill="#c4c3be" />
-          <circle cx="520" cy="400" r="2" fill="#c4c3be" />
+          <motion.g {...drift(11, 15, 32, 1.5)}>
+            <path
+              d="M350 -100 Q50 250 350 500 T350 900"
+              stroke="#c8c7c2"
+              strokeWidth="1"
+              fill="none"
+            />
+            <path
+              d="M400 -100 Q100 250 400 500 T400 900"
+              stroke="#c8c7c2"
+              strokeWidth="1"
+              fill="none"
+            />
+            <path
+              d="M450 -100 Q150 250 450 500 T450 900"
+              stroke="#d4d3ce"
+              strokeWidth="0.75"
+              fill="none"
+            />
+          </motion.g>
+
+          {/* Central ellipse + intersection dots */}
+          <motion.g {...drift(9, 7, 22, 0.8)}>
+            <ellipse
+              cx="400"
+              cy="400"
+              rx="180"
+              ry="120"
+              stroke="#d4d3ce"
+              strokeWidth="0.75"
+              fill="none"
+            />
+            <circle cx="300" cy="350" r="3" fill="#c4c3be" />
+            <circle cx="400" cy="280" r="2" fill="#c4c3be" />
+            <circle cx="500" cy="320" r="3" fill="#c4c3be" />
+            <circle cx="350" cy="450" r="2" fill="#c4c3be" />
+            <circle cx="450" cy="480" r="3" fill="#c4c3be" />
+            <circle cx="280" cy="420" r="2" fill="#c4c3be" />
+            <circle cx="520" cy="400" r="2" fill="#c4c3be" />
+          </motion.g>
         </svg>
       </div>
 
       {/* Subtle grid overlay */}
-      <div 
+      <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage: `
