@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 
 // Smooth continuous orbit. Each group translates around a circle of radius r,
 // sampled as many keyframes and played at constant speed (linear) so it flows
@@ -28,6 +28,11 @@ const orbit = (r: number, duration: number, delay = 0) => {
 }
 
 export function GeometricBackground() {
+  // Honor the OS "reduce motion" setting — freeze the orbit for those users.
+  const reduce = useReducedMotion()
+  const move = (r: number, duration: number, delay = 0) =>
+    reduce ? {} : orbit(r, duration, delay)
+
   return (
     <>
       {/* SVG Geometric Lines */}
@@ -39,7 +44,7 @@ export function GeometricBackground() {
           preserveAspectRatio="xMidYMid slice"
         >
           {/* Horizontal curved lines */}
-          <motion.g {...orbit(34, 48)}>
+          <motion.g {...move(34, 48)}>
             <path
               d="M-100 350 Q250 50 500 350 T1100 350"
               stroke="#c8c7c2"
@@ -61,7 +66,7 @@ export function GeometricBackground() {
           </motion.g>
 
           {/* Vertical curved lines */}
-          <motion.g {...orbit(28, 60, 2)}>
+          <motion.g {...move(28, 60, 2)}>
             <path
               d="M350 -100 Q50 250 350 500 T350 900"
               stroke="#c8c7c2"
@@ -83,7 +88,7 @@ export function GeometricBackground() {
           </motion.g>
 
           {/* Central ellipse + intersection dots */}
-          <motion.g {...orbit(22, 40, 1)}>
+          <motion.g {...move(22, 40, 1)}>
             <ellipse
               cx="400"
               cy="400"
