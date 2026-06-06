@@ -15,7 +15,7 @@ const contrast = [
   {
     label: "Personal second brain",
     examples: "Obsidian · Notion · Roam",
-    desc: "Fragile context management for the hobbyist AI enthusiast — one person's wiki. A flat, tricky to manage wiki that waits to be read and breaks with ingest approaches.",
+    desc: "Fragile context management for the hobbyist AI enthusiast — one person's wiki. A flat, tricky to manage vault that waits to be read and breaks with ingest approaches.",
     muted: true,
   },
   {
