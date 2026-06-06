@@ -1,17 +1,15 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 // ── VIDEO DEMO ──────────────────────────────────────────────────────────
-// YouTube video id for the looping product demo. Empty = "Demo coming soon".
-// Plays muted, autoplay, looping, with no controls/branding/keyboard/fullscreen.
-const DEMO_VIDEO_ID = "ypE6QTUj4fE"
-
-const DEMO_EMBED_URL = DEMO_VIDEO_ID
-  ? `https://www.youtube.com/embed/${DEMO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${DEMO_VIDEO_ID}&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`
-  : ""
+// Self-hosted looping demo. Drop your file at  public/demo.mp4  (optionally a
+// still frame at  public/demo-poster.jpg ). Until then the placeholder shows.
+// Plays muted, autoplay, looping, no controls, non-interactive.
+const DEMO_VIDEO_SRC = "/demo.mp4"
 
 const contrast = [
   {
@@ -29,6 +27,9 @@ const contrast = [
 ]
 
 export function CategoryStatement() {
+  // Hide the <video> if the file isn't there yet, so the placeholder shows.
+  const [videoFailed, setVideoFailed] = useState(false)
+
   return (
     <section
       id="category"
@@ -74,30 +75,32 @@ export function CategoryStatement() {
             transition={{ duration: 0.7, delay: 0.1, ease }}
             className="col-span-12 lg:col-span-7"
           >
-            <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-secondary/40">
-              {DEMO_EMBED_URL ? (
-                <>
-                  <iframe
-                    className="pointer-events-none absolute inset-0 h-full w-full scale-[1.01]"
-                    src={DEMO_EMBED_URL}
-                    title="Amigdala product demo"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                  />
-                  {/* Transparent overlay: swallows clicks + right-click so the
-                      video stays a non-interactive looping background. */}
-                  <div
-                    className="absolute inset-0 z-10"
-                    onContextMenu={(e) => e.preventDefault()}
-                  />
-                </>
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground/50">
-                    Demo coming soon
-                  </span>
-                </div>
+            <div
+              className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-secondary/40"
+              onContextMenu={(e) => e.preventDefault()}
+            >
+              {/* Placeholder behind — shows until public/demo.mp4 exists */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground/50">
+                  Demo coming soon
+                </span>
+              </div>
+
+              {/* Looping, muted, non-interactive demo. Once public/demo.mp4
+                  exists it covers the placeholder; if missing it stays hidden. */}
+              {!videoFailed && (
+                <video
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+                  src={DEMO_VIDEO_SRC}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  onError={() => setVideoFailed(true)}
+                />
               )}
+
               {/* corner label */}
               <span className="pointer-events-none absolute left-4 top-4 z-10 text-[9px] font-mono tracking-[0.2em] uppercase text-muted-foreground/70">
                 Product demo
