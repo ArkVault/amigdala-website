@@ -8,13 +8,13 @@ const contrast = [
   {
     label: "Personal second brain",
     examples: "Obsidian · Notion · Roam",
-    desc: "One person's notes. A flat, passive, personal wiki that waits to be read and forgets the moment you stop typing.",
+    desc: "Fragile context management for the hobbyist AI enthusiast — one person's notes. A flat, passive wiki that waits to be read and forgets the moment you stop typing.",
     muted: true,
   },
   {
     label: "Amigdala",
-    examples: "Enterprise knowledge engine",
-    desc: "The whole company's knowledge and operating context, kept alive and elevated to an enterprise-grade memory layer every agent and executive can act on.",
+    examples: "Robust · Hybrid · Evolving",
+    desc: "A robust, hybrid, evolving knowledge engine: your whole company's knowledge and operating context, kept alive and elevated to an enterprise-grade memory layer every agent and executive can act on.",
     muted: false,
   },
 ]
