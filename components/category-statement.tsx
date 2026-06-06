@@ -10,7 +10,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 //   YouTube: https://www.youtube.com/embed/<id>
 //   Vimeo:   https://player.vimeo.com/video/<id>
 // Leave empty to show the "Demo coming soon" placeholder.
-const DEMO_EMBED_URL = ""
+const DEMO_EMBED_URL = "https://www.youtube.com/embed/ypE6QTUj4fE"
 
 const contrast = [
   {

@@ -2,22 +2,30 @@
 
 import { motion } from "framer-motion"
 
-// Gentle elliptical drift — x and y are a quarter-phase apart so each group
-// traces a slow curved (looping) trajectory rather than a straight slide.
-// Amplitudes are small and durations long, so the motion stays subtle.
-const drift = (ax: number, ay: number, duration: number, delay = 0) => ({
-  animate: {
-    x: [0, ax, 0, -ax, 0],
-    y: [ay, 0, -ay, 0, ay],
-  },
-  transition: {
-    duration,
-    delay,
-    ease: "easeInOut" as const,
-    repeat: Infinity,
-    repeatType: "loop" as const,
-  },
-})
+// Smooth continuous orbit. Each group translates around a circle of radius r,
+// sampled as many keyframes and played at constant speed (linear) so it flows
+// without pausing at corners. First/last keyframe match for a seamless loop.
+// Only a transform is animated — colors and stroke widths are untouched.
+const orbit = (r: number, duration: number, delay = 0) => {
+  const steps = 24
+  const x: number[] = []
+  const y: number[] = []
+  for (let i = 0; i <= steps; i++) {
+    const t = (i / steps) * Math.PI * 2
+    x.push(Number((r * Math.sin(t)).toFixed(2)))
+    y.push(Number((-r * Math.cos(t)).toFixed(2)))
+  }
+  return {
+    animate: { x, y },
+    transition: {
+      duration,
+      delay,
+      ease: "linear" as const,
+      repeat: Infinity,
+      repeatType: "loop" as const,
+    },
+  }
+}
 
 export function GeometricBackground() {
   return (
@@ -31,7 +39,7 @@ export function GeometricBackground() {
           preserveAspectRatio="xMidYMid slice"
         >
           {/* Horizontal curved lines */}
-          <motion.g {...drift(14, 10, 26)}>
+          <motion.g {...orbit(34, 48)}>
             <path
               d="M-100 350 Q250 50 500 350 T1100 350"
               stroke="#c8c7c2"
@@ -53,7 +61,7 @@ export function GeometricBackground() {
           </motion.g>
 
           {/* Vertical curved lines */}
-          <motion.g {...drift(11, 15, 32, 1.5)}>
+          <motion.g {...orbit(28, 60, 2)}>
             <path
               d="M350 -100 Q50 250 350 500 T350 900"
               stroke="#c8c7c2"
@@ -75,7 +83,7 @@ export function GeometricBackground() {
           </motion.g>
 
           {/* Central ellipse + intersection dots */}
-          <motion.g {...drift(9, 7, 22, 0.8)}>
+          <motion.g {...orbit(22, 40, 1)}>
             <ellipse
               cx="400"
               cy="400"
