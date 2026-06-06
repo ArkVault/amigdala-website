@@ -5,12 +5,13 @@ import { motion } from "framer-motion"
 const ease = [0.22, 1, 0.36, 1] as const
 
 // ── VIDEO DEMO ──────────────────────────────────────────────────────────
-// Paste the *embed* URL here (Loom/YouTube/Vimeo). Examples:
-//   Loom:    https://www.loom.com/embed/<id>
-//   YouTube: https://www.youtube.com/embed/<id>
-//   Vimeo:   https://player.vimeo.com/video/<id>
-// Leave empty to show the "Demo coming soon" placeholder.
-const DEMO_EMBED_URL = "https://www.youtube.com/embed/ypE6QTUj4fE"
+// YouTube video id for the looping product demo. Empty = "Demo coming soon".
+// Plays muted, autoplay, looping, with no controls/branding/keyboard/fullscreen.
+const DEMO_VIDEO_ID = "ypE6QTUj4fE"
+
+const DEMO_EMBED_URL = DEMO_VIDEO_ID
+  ? `https://www.youtube.com/embed/${DEMO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${DEMO_VIDEO_ID}&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3`
+  : ""
 
 const contrast = [
   {
@@ -75,13 +76,21 @@ export function CategoryStatement() {
           >
             <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-secondary/40">
               {DEMO_EMBED_URL ? (
-                <iframe
-                  className="absolute inset-0 h-full w-full"
-                  src={DEMO_EMBED_URL}
-                  title="Amigdala product demo"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                  allowFullScreen
-                />
+                <>
+                  <iframe
+                    className="pointer-events-none absolute inset-0 h-full w-full scale-[1.01]"
+                    src={DEMO_EMBED_URL}
+                    title="Amigdala product demo"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                  {/* Transparent overlay: swallows clicks + right-click so the
+                      video stays a non-interactive looping background. */}
+                  <div
+                    className="absolute inset-0 z-10"
+                    onContextMenu={(e) => e.preventDefault()}
+                  />
+                </>
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground/50">
