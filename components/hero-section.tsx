@@ -33,7 +33,7 @@ export function HeroSection() {
           >
             The self-evolving enterprise knowledge engine
             <br />
-            <span className="italic">for executives.</span>
+            <span className="italic">for executives, agents and harnesses.</span>
           </motion.h1>
 
           {/* Description */}

@@ -8,7 +8,7 @@ const contrast = [
   {
     label: "Personal second brain",
     examples: "Obsidian · Notion · Roam",
-    desc: "Fragile context management for the hobbyist AI enthusiast — one person's notes. A flat, passive wiki that waits to be read and forgets the moment you stop typing.",
+    desc: "Fragile context management for the hobbyist AI enthusiast — one person's notes. A flat, passive wiki that waits to be read and breaks with ingest approaches.",
     muted: true,
   },
   {
@@ -73,26 +73,40 @@ export function CategoryStatement() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.5, ease }}
-                  className="bg-background p-7 flex flex-col gap-3"
+                  className={`p-7 flex flex-col gap-3 ${
+                    item.muted
+                      ? "bg-background"
+                      : "bg-secondary/60 border-l-2 border-emerald-500/70"
+                  }`}
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className={`w-2 h-2 rounded-full ${
-                        item.muted ? "bg-muted-foreground/40" : "bg-orange-600 animate-pulse"
+                        item.muted
+                          ? "bg-muted-foreground/30"
+                          : "bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.7)]"
                       }`}
                     />
-                    <span className="text-[9px] font-mono tracking-[0.2em] uppercase text-muted-foreground/60">
+                    <span
+                      className={`text-[9px] font-mono tracking-[0.2em] uppercase ${
+                        item.muted ? "text-muted-foreground/50" : "text-emerald-500/80"
+                      }`}
+                    >
                       {item.examples}
                     </span>
                   </div>
                   <h3
                     className={`font-serif text-xl lg:text-2xl font-light ${
-                      item.muted ? "text-muted-foreground" : "text-foreground"
+                      item.muted ? "text-muted-foreground/70" : "text-foreground"
                     }`}
                   >
                     {item.label}
                   </h3>
-                  <p className="text-[13px] text-muted-foreground leading-relaxed">
+                  <p
+                    className={`text-[13px] leading-relaxed ${
+                      item.muted ? "text-muted-foreground/60" : "text-muted-foreground"
+                    }`}
+                  >
                     {item.desc}
                   </p>
                 </motion.div>
