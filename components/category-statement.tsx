@@ -13,7 +13,7 @@ const DEMO_VIDEO_SRC = "/demo.mp4"
 
 const contrast = [
   {
-    label: "Personal second brain",
+    label: "Personal knowledge layer",
     examples: "Obsidian · Notion · Roam",
     desc: "Fragile context management for the hobbyist AI enthusiast — one person's wiki. A flat, tricky to manage vault that waits to be read and breaks with ingest approaches.",
     muted: true,
@@ -48,14 +48,14 @@ export function CategoryStatement() {
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-[1px] bg-muted-foreground/30" />
               <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">
-                NOT A SECOND BRAIN
+                NOT A PERSONAL KNOWLEDGE VAULT
               </span>
             </div>
 
             <h2 className="font-serif text-3xl lg:text-5xl font-light text-foreground leading-[1.1] mb-6">
               We are not a personal
               <br />
-              second brain.
+              knowledge vault.
             </h2>
 
             <p className="text-sm lg:text-base text-muted-foreground leading-relaxed max-w-md">
