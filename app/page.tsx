@@ -11,6 +11,12 @@ import { GeometricBackground } from "@/components/geometric-background"
 export default function Page() {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      <input
+        id="amigdala-guide-toggle"
+        type="checkbox"
+        aria-label="Toggle Amigdala guide"
+        className="sr-only"
+      />
       <GeometricBackground />
       <Navbar />
       <main className="relative z-10">

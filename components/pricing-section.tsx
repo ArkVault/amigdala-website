@@ -1,5 +1,6 @@
 "use client"
 
+import { SectionGuide } from "@/components/guide"
 import { ArrowRight, Check, CircleDollarSign, ClipboardCheck, Network, Workflow } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -39,6 +40,21 @@ const proofPoints = [
   "Value-aligned commercial model: knowledge base, AI credits, and outcome share",
 ]
 
+const benefitsGuideSteps = [
+  {
+    title: "Tie value to repeated work",
+    body: "Quantify where agents and people repeatedly rebuild context, then model the savings from persistent memory.",
+  },
+  {
+    title: "Pick one production pilot",
+    body: "Choose a workflow with real decisions, required citations, and a clear human escalation path.",
+  },
+  {
+    title: "Measure auditability",
+    body: "Track whether each recommendation includes source lineage, confidence, review status, and decision trail.",
+  },
+]
+
 function BenefitCard({ benefit, index }: { benefit: (typeof benefits)[number]; index: number }) {
   return (
     <motion.div
@@ -75,6 +91,10 @@ export function PricingSection() {
   return (
     <section id="benefits" className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border">
       <div className="max-w-7xl mx-auto">
+        <SectionGuide
+          title="Turn the story into a pilot"
+          steps={benefitsGuideSteps}
+        />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

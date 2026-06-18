@@ -1,5 +1,6 @@
 "use client"
 
+import { SectionGuide } from "@/components/guide"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
@@ -26,6 +27,21 @@ const contrast = [
   },
 ]
 
+const categoryGuideSteps = [
+  {
+    title: "Separate personal notes from company memory",
+    body: "Use this section to confirm Amigdala is not another private wiki or manual vault.",
+  },
+  {
+    title: "Map enterprise-grade requirements",
+    body: "Look for confidence, citation, review paths, and audit trails before treating knowledge as actionable.",
+  },
+  {
+    title: "Watch for the operating layer",
+    body: "The demo area should show Amigdala sitting between existing systems and decisions, not replacing systems.",
+  },
+]
+
 export function CategoryStatement() {
   // Hide the <video> if the file isn't there yet, so the placeholder shows.
   const [videoFailed, setVideoFailed] = useState(false)
@@ -36,6 +52,10 @@ export function CategoryStatement() {
       className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border"
     >
       <div className="max-w-7xl mx-auto">
+        <SectionGuide
+          title="Read this as the category boundary"
+          steps={categoryGuideSteps}
+        />
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-center">
           {/* Left column - the punch line */}
           <motion.div

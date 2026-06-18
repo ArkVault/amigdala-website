@@ -1,5 +1,6 @@
 "use client"
 
+import { SectionGuide } from "@/components/guide"
 import { motion } from "framer-motion"
 import { Brain, Shield, GitBranch, FileCode2 } from "lucide-react"
 
@@ -32,10 +33,30 @@ const features = [
   },
 ]
 
+const featuresGuideSteps = [
+  {
+    title: "Start with intuition interpretation",
+    body: "Translate artifacts into decision logic: stakes, causality, escalation, and company voice.",
+  },
+  {
+    title: "Check governance before scale",
+    body: "Confirm data controls and permissions before any agent can rely on the memory layer.",
+  },
+  {
+    title: "Expose output where agents work",
+    body: "Return decision, confidence, citation, HITL status, and audit details at the moment of action.",
+  },
+]
+
 export function FeatureGrid() {
   return (
     <section id="features" className="relative w-full px-8 sm:px-12 lg:px-24 py-32">
       <div className="max-w-7xl mx-auto">
+        <SectionGuide
+          title="Follow the four product primitives"
+          steps={featuresGuideSteps}
+          align="left"
+        />
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

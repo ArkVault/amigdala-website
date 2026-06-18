@@ -1,13 +1,34 @@
 "use client"
 
+import { SectionGuide } from "@/components/guide"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+const heroGuideSteps = [
+  {
+    title: "Name the repeated context loss",
+    body: "Start by identifying where agents or teams rebuild the same company knowledge in every session.",
+  },
+  {
+    title: "Pick one decision fork",
+    body: "Choose a recurring executive, operator, or AI-agent decision where confidence and citation matter.",
+  },
+  {
+    title: "Use Amigdala as the memory call",
+    body: "Let the agent request grounded context, decision logic, HITL signal, and audit trail before acting.",
+  },
+]
+
 export function HeroSection() {
   return (
-    <section id="problem" className="relative w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-24 pt-28 sm:pt-32 pb-16 sm:pb-20">
+    <section id="problem" className="relative w-full min-h-screen flex flex-col justify-center px-6 sm:px-12 lg:px-24 pt-28 sm:pt-32 pb-16 sm:pb-20">
+      <SectionGuide
+        title="Start with the decision that keeps losing context"
+        steps={heroGuideSteps}
+        align="left"
+      />
       <div className="relative z-10 grid grid-cols-12 gap-8 w-full max-w-7xl mx-auto">
         {/* Left content */}
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">

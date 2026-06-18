@@ -1,5 +1,6 @@
 "use client"
 
+import { GuideToggle } from "@/components/guide"
 import { motion } from "framer-motion"
 
 export function Navbar() {
@@ -50,8 +51,9 @@ export function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.4 }}
-          className="flex items-center gap-3 sm:gap-6"
+          className="flex items-center gap-2 sm:gap-4"
         >
+          <GuideToggle />
           <a
             href="/app"
             className="hidden sm:inline text-[11px] font-mono tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"

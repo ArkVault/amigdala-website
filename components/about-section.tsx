@@ -1,5 +1,6 @@
 "use client"
 
+import { SectionGuide } from "@/components/guide"
 import { motion } from "framer-motion"
 import { DatabaseZap, Eye, Orbit } from "lucide-react"
 
@@ -26,10 +27,29 @@ const solutionSteps = [
   },
 ]
 
+const solutionGuideSteps = [
+  {
+    title: "Digest the live operating sources",
+    body: "Connect the artifacts where work already happens: messages, tickets, CRM, ERP, and decision logs.",
+  },
+  {
+    title: "Save reusable context",
+    body: "Keep the company memory persistent so every agent session can start from current operating reality.",
+  },
+  {
+    title: "Render the decision pathway",
+    body: "Show executives the route, citations, confidence, and review needs behind every recommendation.",
+  },
+]
+
 export function AboutSection() {
   return (
     <section id="solution" className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border">
       <div className="max-w-7xl mx-auto">
+        <SectionGuide
+          title="Use the observe-act loop"
+          steps={solutionGuideSteps}
+        />
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-start">
           {/* Left column - Content */}
           <motion.div

@@ -1,5 +1,6 @@
 "use client"
 
+import { SectionGuide } from "@/components/guide"
 import { motion } from "framer-motion"
 
 const sourceSignals = [
@@ -14,10 +15,30 @@ const sourceSignals = [
   "Audit Trails",
 ]
 
+const signalsGuideSteps = [
+  {
+    title: "Treat each signal as an input",
+    body: "Slack, Teams, tickets, CRM, ERP, and audit trails are sources of operating context.",
+  },
+  {
+    title: "Keep motion from becoming noise",
+    body: "Amigdala turns these moving fragments into stable memory agents can safely call.",
+  },
+  {
+    title: "Preserve lineage",
+    body: "Every answer should remain traceable back to the artifacts and events that shaped it.",
+  },
+]
+
 export function GlitchMarquee() {
   return (
     <section className="w-full py-16 border-t border-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 mb-8">
+        <SectionGuide
+          title="Understand the source stream"
+          steps={signalsGuideSteps}
+          align="left"
+        />
         <div className="flex items-center gap-3 sm:gap-4">
           <div className="hidden sm:block w-12 h-[1px] bg-muted-foreground/30" />
           <span className="text-[10px] font-mono tracking-[0.18em] sm:tracking-[0.25em] uppercase text-muted-foreground">
