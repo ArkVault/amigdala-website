@@ -29,16 +29,16 @@ const contrast = [
 
 const categoryGuideSteps = [
   {
-    title: "Separate personal notes from company memory",
-    body: "Use this section to confirm Amigdala is not another private wiki or manual vault.",
+    title: "Ingest the operating sources",
+    body: "Connect the messages, tickets, CRM, ERP, decision logs, and other artifacts that explain how work actually happens.",
   },
   {
-    title: "Map enterprise-grade requirements",
-    body: "Look for confidence, citation, review paths, and audit trails before treating knowledge as actionable.",
+    title: "Keep source ownership intact",
+    body: "Your systems remain the source of record. Amigdala organizes their operating context into an enterprise memory layer.",
   },
   {
-    title: "Watch for the operating layer",
-    body: "The demo area should show Amigdala sitting between existing systems and decisions, not replacing systems.",
+    title: "Set the enterprise boundary",
+    body: "Apply permissions, approved sources, and review requirements before a memory can be used to guide an AI system.",
   },
 ]
 
@@ -53,8 +53,10 @@ export function CategoryStatement() {
     >
       <div className="max-w-7xl mx-auto">
         <SectionGuide
-          title="Read this as the category boundary"
+          title="Ingest the enterprise reality"
           steps={categoryGuideSteps}
+          step={2}
+          totalSteps={6}
         />
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-center">
           {/* Left column - the punch line */}

@@ -1,6 +1,7 @@
 "use client"
 
-import { BookOpenCheck, Eye, EyeOff, X } from "lucide-react"
+import { BookOpenCheck, Info, X } from "lucide-react"
+import { createContext, useContext, useState } from "react"
 import { cn } from "@/lib/utils"
 
 type GuideStep = {
@@ -8,26 +9,59 @@ type GuideStep = {
   body: string
 }
 
-export function GuideToggle({ className }: { className?: string }) {
+type GuideContextValue = {
+  isOpen: boolean
+  toggle: () => void
+  close: () => void
+}
+
+const GuideContext = createContext<GuideContextValue | null>(null)
+
+function useGuide() {
+  const guide = useContext(GuideContext)
+
+  if (!guide) {
+    throw new Error("Guide controls must be used inside GuideProvider")
+  }
+
+  return guide
+}
+
+export function GuideProvider({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <label
-      htmlFor="amigdala-guide-toggle"
+    <GuideContext.Provider
+      value={{
+        isOpen,
+        toggle: () => setIsOpen((open) => !open),
+        close: () => setIsOpen(false),
+      }}
+    >
+      {children}
+    </GuideContext.Provider>
+  )
+}
+
+export function GuideToggle({ className }: { className?: string }) {
+  const { isOpen, toggle } = useGuide()
+
+  return (
+    <button
+      type="button"
+      aria-pressed={isOpen}
+      aria-label={isOpen ? "Hide workflow guide" : "Show workflow guide"}
+      onClick={toggle}
       className={cn(
-        "amigdala-guide-toggle inline-flex h-9 cursor-pointer items-center gap-2 rounded-sm border border-border bg-background/80 px-3 text-[10px] font-mono uppercase tracking-[0.12em] text-muted-foreground backdrop-blur-sm transition-colors hover:border-foreground/30 hover:text-foreground",
+        "amigdala-guide-toggle inline-flex h-9 items-center gap-2 rounded-sm border border-border bg-background/80 px-3 text-[10px] font-mono uppercase tracking-[0.12em] text-muted-foreground backdrop-blur-sm transition-colors hover:border-foreground/30 hover:text-foreground",
+        isOpen && "border-foreground/30 bg-foreground text-primary-foreground",
         className,
       )}
     >
-      <span className="guide-toggle-off inline-flex items-center gap-2">
-        <Eye size={14} strokeWidth={1.7} />
-        <span className="hidden lg:inline">Use Amigdala</span>
-        <span className="lg:hidden">Guide</span>
-      </span>
-      <span className="guide-toggle-on items-center gap-2">
-        <EyeOff size={14} strokeWidth={1.7} />
-        <span className="hidden lg:inline">Hide Guide</span>
-        <span className="lg:hidden">Hide</span>
-      </span>
-    </label>
+      {isOpen ? <X size={14} strokeWidth={1.7} /> : <Info size={14} strokeWidth={1.7} />}
+      <span className="hidden sm:inline">{isOpen ? "Hide Guide" : "How It Works"}</span>
+      <span className="sm:hidden">{isOpen ? "Hide" : "Info"}</span>
+    </button>
   )
 }
 
@@ -35,15 +69,25 @@ export function SectionGuide({
   eyebrow = "Use Amigdala",
   title,
   steps,
+  step,
+  totalSteps,
   align = "right",
   className,
 }: {
   eyebrow?: string
   title: string
   steps: GuideStep[]
+  step: number
+  totalSteps: number
   align?: "left" | "right"
   className?: string
 }) {
+  const { isOpen, close } = useGuide()
+
+  if (!isOpen) {
+    return null
+  }
+
   return (
     <aside
       className={cn(
@@ -59,21 +103,21 @@ export function SectionGuide({
           </div>
           <div>
             <span className="block text-[9px] font-mono uppercase tracking-[0.18em] text-muted-foreground">
-              {eyebrow}
+              {eyebrow} · Step {step} of {totalSteps}
             </span>
             <h3 className="mt-1 font-serif text-lg font-light leading-tight text-foreground">
               {title}
             </h3>
           </div>
         </div>
-        <label
-          htmlFor="amigdala-guide-toggle"
+        <button
+          type="button"
           aria-label="Hide guide"
-          role="button"
+          onClick={close}
           className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-sm border border-transparent text-muted-foreground transition-colors hover:border-border hover:text-foreground"
         >
           <X size={14} strokeWidth={1.7} />
-        </label>
+        </button>
       </div>
 
       <ol className="grid gap-3">

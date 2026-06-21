@@ -8,16 +8,16 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 const heroGuideSteps = [
   {
-    title: "Name the repeated context loss",
-    body: "Start by identifying where agents or teams rebuild the same company knowledge in every session.",
+    title: "Choose one decision that keeps losing context",
+    body: "Start with a recurring executive, operator, or agent decision where teams repeatedly rebuild company knowledge.",
   },
   {
-    title: "Pick one decision fork",
-    body: "Choose a recurring executive, operator, or AI-agent decision where confidence and citation matter.",
+    title: "Define what a reliable answer needs",
+    body: "List the source evidence, policies, owners, and escalation path the agent must consider before it acts.",
   },
   {
-    title: "Use Amigdala as the memory call",
-    body: "Let the agent request grounded context, decision logic, HITL signal, and audit trail before acting.",
+    title: "Start with a narrow pilot",
+    body: "A single decision fork gives Amigdala a clear way to prove persistent context, traceability, and improvement over time.",
   },
 ]
 
@@ -27,6 +27,8 @@ export function HeroSection() {
       <SectionGuide
         title="Start with the decision that keeps losing context"
         steps={heroGuideSteps}
+        step={1}
+        totalSteps={6}
         align="left"
       />
       <div className="relative z-10 grid grid-cols-12 gap-8 w-full max-w-7xl mx-auto">

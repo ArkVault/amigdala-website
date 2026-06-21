@@ -7,27 +7,24 @@ import { PricingSection } from "@/components/pricing-section"
 import { GlitchMarquee } from "@/components/glitch-marquee"
 import { Footer } from "@/components/footer"
 import { GeometricBackground } from "@/components/geometric-background"
+import { GuideProvider } from "@/components/guide"
 
 export default function Page() {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
-      <input
-        id="amigdala-guide-toggle"
-        type="checkbox"
-        aria-label="Toggle Amigdala guide"
-        className="sr-only"
-      />
-      <GeometricBackground />
-      <Navbar />
-      <main className="relative z-10">
-        <HeroSection />
-        <CategoryStatement />
-        <FeatureGrid />
-        <AboutSection />
-        <GlitchMarquee />
-        <PricingSection />
-      </main>
-      <Footer />
+      <GuideProvider>
+        <GeometricBackground />
+        <Navbar />
+        <main className="relative z-10">
+          <HeroSection />
+          <CategoryStatement />
+          <FeatureGrid />
+          <AboutSection />
+          <GlitchMarquee />
+          <PricingSection />
+        </main>
+        <Footer />
+      </GuideProvider>
     </div>
   )
 }

@@ -163,30 +163,7 @@
 }
 
 .amigdala-section-guide {
-  display: none;
-}
-
-.amigdala-guide-toggle .guide-toggle-on {
-  display: none;
-}
-
-body:has(#amigdala-guide-toggle:checked) .amigdala-section-guide {
-  display: block;
   animation: guidePopupIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body:has(#amigdala-guide-toggle:checked) .amigdala-guide-toggle {
-  border-color: hsl(var(--foreground) / 0.3);
-  background: hsl(var(--foreground));
-  color: hsl(var(--primary-foreground));
-}
-
-body:has(#amigdala-guide-toggle:checked) .amigdala-guide-toggle .guide-toggle-off {
-  display: none;
-}
-
-body:has(#amigdala-guide-toggle:checked) .amigdala-guide-toggle .guide-toggle-on {
-  display: inline-flex;
 }
 
 /* Glass morphism */

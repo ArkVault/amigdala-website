@@ -17,16 +17,16 @@ const sourceSignals = [
 
 const signalsGuideSteps = [
   {
-    title: "Treat each signal as an input",
-    body: "Slack, Teams, tickets, CRM, ERP, and audit trails are sources of operating context.",
+    title: "Connect agents where they already work",
+    body: "Codex, Claude Code, internal agents, and other systems call Amigdala when a real decision fork appears.",
   },
   {
-    title: "Keep motion from becoming noise",
-    body: "Amigdala turns these moving fragments into stable memory agents can safely call.",
+    title: "Return grounded guidance",
+    body: "Each call can return decision-ready context with citations, confidence, escalation signals, and audit detail.",
   },
   {
-    title: "Preserve lineage",
-    body: "Every answer should remain traceable back to the artifacts and events that shaped it.",
+    title: "Let systems act with context",
+    body: "The agent gets the company-specific reasoning it needs without re-ingesting or re-prompting the organization on every run.",
   },
 ]
 
@@ -35,8 +35,10 @@ export function GlitchMarquee() {
     <section className="w-full py-16 border-t border-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 mb-8">
         <SectionGuide
-          title="Understand the source stream"
+          title="Make context available to every agent"
           steps={signalsGuideSteps}
+          step={5}
+          totalSteps={6}
           align="left"
         />
         <div className="flex items-center gap-3 sm:gap-4">

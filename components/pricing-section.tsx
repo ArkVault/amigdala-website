@@ -42,16 +42,16 @@ const proofPoints = [
 
 const benefitsGuideSteps = [
   {
-    title: "Tie value to repeated work",
-    body: "Quantify where agents and people repeatedly rebuild context, then model the savings from persistent memory.",
+    title: "Capture the outcome",
+    body: "Record the decision, result, escalation, and human feedback so the memory layer learns from real operating work.",
   },
   {
-    title: "Pick one production pilot",
-    body: "Choose a workflow with real decisions, required citations, and a clear human escalation path.",
+    title: "Refresh the context deliberately",
+    body: "New enterprise evidence improves the context while source lineage, permissions, and review controls stay intact.",
   },
   {
-    title: "Measure auditability",
-    body: "Track whether each recommendation includes source lineage, confidence, review status, and decision trail.",
+    title: "Measure reliability over time",
+    body: "Track coverage, citations, confidence, review status, and outcomes to prove the context is earning trust.",
   },
 ]
 
@@ -92,8 +92,10 @@ export function PricingSection() {
     <section id="benefits" className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <SectionGuide
-          title="Turn the story into a pilot"
+          title="Improve context with every decision"
           steps={benefitsGuideSteps}
+          step={6}
+          totalSteps={6}
         />
         <motion.div
           initial={{ opacity: 0, y: 20 }}

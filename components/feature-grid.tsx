@@ -35,16 +35,16 @@ const features = [
 
 const featuresGuideSteps = [
   {
-    title: "Start with intuition interpretation",
-    body: "Translate artifacts into decision logic: stakes, causality, escalation, and company voice.",
+    title: "Extract the decision logic",
+    body: "Amigdala interprets the stakes, causality, escalation rules, and company voice embedded in enterprise artifacts.",
   },
   {
-    title: "Check governance before scale",
-    body: "Confirm data controls and permissions before any agent can rely on the memory layer.",
+    title: "Attach evidence and controls",
+    body: "Preserve citations, confidence, permissions, and human-review signals so context stays dependable instead of becoming a black box.",
   },
   {
-    title: "Expose output where agents work",
-    body: "Return decision, confidence, citation, HITL status, and audit details at the moment of action.",
+    title: "Make the memory decision-ready",
+    body: "The result is more than a document index: it is context an agent can use at the exact point it needs to decide.",
   },
 ]
 
@@ -53,8 +53,10 @@ export function FeatureGrid() {
     <section id="features" className="relative w-full px-8 sm:px-12 lg:px-24 py-32">
       <div className="max-w-7xl mx-auto">
         <SectionGuide
-          title="Follow the four product primitives"
+          title="Process artifacts into reliable context"
           steps={featuresGuideSteps}
+          step={3}
+          totalSteps={6}
           align="left"
         />
         {/* Section header */}

@@ -29,16 +29,16 @@ const solutionSteps = [
 
 const solutionGuideSteps = [
   {
-    title: "Digest the live operating sources",
-    body: "Connect the artifacts where work already happens: messages, tickets, CRM, ERP, and decision logs.",
+    title: "Maintain a living memory",
+    body: "As the business changes, Amigdala updates the relevant operating context instead of forcing each new session to begin from scratch.",
   },
   {
-    title: "Save reusable context",
-    body: "Keep the company memory persistent so every agent session can start from current operating reality.",
+    title: "Keep the provenance attached",
+    body: "Every memory remains linked to its supporting artifacts, confidence, and review requirements as the context evolves.",
   },
   {
-    title: "Render the decision pathway",
-    body: "Show executives the route, citations, confidence, and review needs behind every recommendation.",
+    title: "Make updates durable",
+    body: "The company context persists across agent sessions and systems, without turning into a stale personal knowledge vault.",
   },
 ]
 
@@ -47,8 +47,10 @@ export function AboutSection() {
     <section id="solution" className="relative w-full px-8 sm:px-12 lg:px-24 py-32 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <SectionGuide
-          title="Use the observe-act loop"
+          title="Keep company context persistent"
           steps={solutionGuideSteps}
+          step={4}
+          totalSteps={6}
         />
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12 items-start">
           {/* Left column - Content */}
