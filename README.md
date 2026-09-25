@@ -4,7 +4,6 @@
 
 You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_8TpuWUx50ueEUkhNLWoZQ7AylS69)
 
 ## Getting Started
 
